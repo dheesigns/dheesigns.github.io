@@ -134,13 +134,13 @@ for(let i = 0; i < navigationLinks.length; i++) {
 }
 
 (function() {
-    emailjs.init("AX2HsJgz2hXvlwhGb");
+    emailjs.init("2YmYsHi04ciA2dr0f");
   })();
 
   document.getElementById("contact-form").addEventListener("submit", function(e) {
     e.preventDefault();
 
-    emailjs.sendForm("service_m28ozyi", "template_xb9lq14", this)
+    emailjs.sendForm("service_t2fk4o4", "template_439lsve", this)
       .then(() => {
         showToast("Message Sent Successfully 🎉", true);
         this.reset();
