@@ -1,7 +1,8 @@
 //More info about this project and the newer optimized version: https://isladjan.com/work/4/
 //Author: isladjan - https://isladjan.com/
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
 
 let speed = 100;
 let height = document.querySelector("svg").getBBox().height;
@@ -265,3 +266,5 @@ window.onbeforeunload = function () {
 //     var cursorPt = pt.matrixTransform(svg.getScreenCTM().inverse());
 //     return { x: Math.floor(cursorPt.x), y: Math.floor(cursorPt.y) }
 // }
+
+

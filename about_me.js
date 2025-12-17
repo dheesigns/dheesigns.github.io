@@ -223,3 +223,103 @@ vid.forEach((file, index) => {
     </li>
   `;
 });
+const titles = [
+  "DTP Designer",
+  "Video Editor"
+];
+
+let index = 0;
+let charIndex = 0;
+let isDeleting = false;
+const speed = 100;
+
+function typeEffect() {
+  const current = titles[index];
+  const titleEl = document.getElementById("job-title");
+
+  if (isDeleting) {
+    titleEl.textContent = current.substring(0, charIndex--);
+  } else {
+    titleEl.textContent = current.substring(0, charIndex++);
+  }
+
+  if (!isDeleting && charIndex === current.length + 1) {
+    setTimeout(() => isDeleting = true, 1000);
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    index = (index + 1) % titles.length;
+  }
+
+  setTimeout(typeEffect, speed);
+}
+
+typeEffect();
+
+
+
+const carousel = document.querySelector('.testimonials-list');
+let items = Array.from(carousel.children);
+
+const itemWidth = items[0].offsetWidth + 20; // card + gap
+let indexe = 1;
+
+// Clone first & last
+const firstClone = items[0].cloneNode(true);
+const lastClone = items[items.length - 1].cloneNode(true);
+
+carousel.appendChild(firstClone);
+carousel.insertBefore(lastClone, items[0]);
+
+items = Array.from(carousel.children);
+
+// Start from first real item
+carousel.scrollLeft = itemWidth;
+
+function moveNext() {
+  indexe++;
+  carousel.scrollTo({
+    left: itemWidth * indexe,
+    behavior: 'smooth'
+  });
+
+  if (indexe === items.length - 1) {
+    setTimeout(() => {
+      carousel.style.scrollBehavior = 'auto';
+      indexe = 1;
+      carousel.scrollLeft = itemWidth * indexe;
+      carousel.style.scrollBehavior = 'smooth';
+    }, 400);
+  }
+}
+
+function movePrev() {
+  indexe--;
+  carousel.scrollTo({
+    left: itemWidth * indexe,
+    behavior: 'smooth'
+  });
+
+  if (indexe === 0) {
+    setTimeout(() => {
+      carousel.style.scrollBehavior = 'auto';
+      indexe = items.length - 2;
+      carousel.scrollLeft = itemWidth * indexe;
+      carousel.style.scrollBehavior = 'smooth';
+    }, 400);
+  }
+}
+
+// Auto scroll
+setInterval(moveNext, 3000);
+
+// Optional swipe support
+let startX = 0;
+carousel.addEventListener('touchstart', e => {
+  startX = e.touches[0].clientX;
+});
+
+carousel.addEventListener('touchend', e => {
+  const endX = e.changedTouches[0].clientX;
+  if (startX - endX > 50) moveNext();
+  if (endX - startX > 50) movePrev();
+});

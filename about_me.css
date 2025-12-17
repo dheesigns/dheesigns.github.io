@@ -179,6 +179,7 @@ article { display: none; }
 .has-scrollbar::-webkit-scrollbar {
     width: 5px;
     height: 5px;
+    overflow: hidden !important;
 }
 
 .has-scrollbar::-webkit-scrollbar-track {
@@ -629,7 +630,7 @@ article { display: none; }
     justify-content: center;
     align-items: center;
     
-        filter: grayscale(1);
+       /* filter: grayscale(1); */
         transition: var(--transition1);
     }
 
@@ -1542,3 +1543,112 @@ ul li img:hover {
   box-shadow: 0 25px 40px rgba(0, 0, 0, 0.4);
 }
 
+#job-title{
+    color: var(--orange-yellow-crayola);
+
+}
+#job-title::after {
+  content: "|";
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+
+.clients-list {
+  display: flex;
+  gap: 20px;
+}
+
+.clients-item img {
+  max-width: 150px;
+  object-fit: contain;
+}
+
+/* Animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 5));
+  }
+}
+
+/* Slider */
+.slider {
+  background: white;
+  box-shadow: 0 10px 20px -10px gold;
+  height: auto;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: auto;
+  border-radius: 20px;
+}
+
+.slider::before,
+.slider::after {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  content: "";
+  height: 100px;
+  position: absolute;
+  width: 200px;
+  z-index: 2;
+}
+
+.slider::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+
+.slider::before {
+  left: 0;
+  top: 0;
+}
+
+.slide-track {
+  display: flex;
+  width: calc(250px * 2);
+  animation: scroll 40s linear infinite;
+}
+
+.slide {
+  width: 250px;
+  flex-shrink: 0;
+  height:  auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide img {
+  max-width: 150px;
+  max-height: 80px;
+  object-fit: contain;
+}
+
+.testimonials-list {
+  display: flex;
+  gap: 20px;
+  overflow: auto;           /* important */
+  scroll-behavior: smooth;
+  padding: 40px 0;
+}
+
+.testimonials-item {
+  flex: 0 0 280px;            /* card width */
+}
+
+/* Optional hover lift */
+.testimonials-item:hover {
+  transform: translateY(-8px);
+  transition: transform 0.3s ease;
+}
