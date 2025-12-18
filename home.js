@@ -1,7 +1,15 @@
 //More info about this project and the newer optimized version: https://isladjan.com/work/4/
 //Author: isladjan - https://isladjan.com/
+gsap.registerPlugin(ScrollToPlugin);
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+let scrollHeight = document.querySelector('.scrollElement').offsetHeight;
+
+gsap.to(window, {
+    scrollTo: { y: scrollHeight },
+    duration: 10,   // adjust as needed
+    ease: "none"
+});
+
 
 
 let speed = 100;
@@ -258,6 +266,10 @@ gsap.fromTo("#stars path:nth-of-type(48)", { opacity: 0.3 }, { opacity: 1, durat
 window.onbeforeunload = function () {
     window.scrollTo(0, 0);
 };
+
+setTimeout(() => {
+    window.location.href = "about_me.html"; // change to your URL
+  }, 10000); // 10000ms = 10s
 
 // function screenToSVG(svg, x, y) {
 //     var pt = svg.createSVGPoint();
