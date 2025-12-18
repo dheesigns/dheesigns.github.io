@@ -185,8 +185,15 @@ const projectList = document.getElementById('projectList');
 flyers.forEach((file, index) => {
   projectList.innerHTML += `
     <li class="project-item active" data-filter-item data-category="flyers">
-      <a href="myworks/flyers/${file}" target="_blank">
+      
         <figure class="project-img">
+         <!-- Download Button -->
+        <a class="download-btn"
+           href="myworks/flyers/${file}"
+           download
+           title="Download">
+          <ion-icon name="download-outline"></ion-icon>
+        </a>
           <div class="project-item-icon-box">
             <ion-icon name="eye-outline"></ion-icon>
           </div>
@@ -195,7 +202,7 @@ flyers.forEach((file, index) => {
         </figure>
         <h3 class="project-title">Flyer ${index + 1}</h3>
         <p class="project-category">Flyers</p>
-      </a>
+       
     </li>
   `;
 });
@@ -203,8 +210,15 @@ flyers.forEach((file, index) => {
 vid.forEach((file, index) => {
   projectList.innerHTML += `
     <li class="project-item active" data-filter-item data-category="video editing">
-      <a href="myworks/videos/${file}" target="_blank">
+     
         <figure class="project-img">
+         <!-- Download Button -->
+        <a class="download-btn"
+           href="myworks/videos/${file}"
+           download
+           title="Download">
+          <ion-icon name="download-outline"></ion-icon>
+        </a>
           <div class="project-item-icon-box">
             <ion-icon name="eye-outline"></ion-icon>
           </div>
@@ -219,13 +233,14 @@ vid.forEach((file, index) => {
         </figure>
         <h3 class="project-title">video ${index + 1}</h3>
         <p class="project-category">Video Editing</p>
-      </a>
+     
     </li>
   `;
 });
 const titles = [
-  "DTP Designer",
-  "Video Editor"
+  "Video Editor",
+  "DTP Designer"
+ 
 ];
 
 let index = 0;
